@@ -1,0 +1,653 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+
+
+</head>
+<style>
+
+* {
+margin:0;
+padding:0;
+}
+
+body {
+    font-family: Arial narrow, sans-serif;
+    background-color: #f7f7f7;
+overflow-x:hidden;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+.dark-theme header {
+background: #e6e6e6;
+color:black;
+}
+
+nav {
+display:flex;
+justify-content:space-around;
+}
+
+nav ul {
+    list-style: none;
+    width:40%;
+    display: flex;
+    justify-content: space-between;
+font-family: open sans;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hamburger menu */
+.menu-toggle {
+display:none;
+flex-direction:column;
+height:20px;
+justify-content:space-between;
+position:relative;
+}
+
+.menu-toggle input {
+position:absolute;
+width:40px;
+height:28px;
+left:-5px;
+top:-3px;
+opacity:0;
+cursor:pointer;
+z-index:2;
+}
+
+.menu-toggle span {
+display:block;
+width:20px;
+height:3px;
+background-color:white;
+border-radius:3px; 
+transition: all 0.5s;
+}
+
+.dark-theme .menu-toggle span {
+background:gray;
+}
+
+/* Hamburger Menu Animation */
+.menu-toggle span:nth-child(2) {
+transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4) {
+transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2) {
+transform:rotate(45deg) translate(3px, 1px);
+background-color:white;
+}
+
+.menu-toggle input:checked ~ span:nth-child(4) {
+transform:rotate(-45deg) translate(3px, 1px);
+background-color:white;
+}
+
+.menu-toggle input:checked ~ span:nth-child(3) {
+transform:scale(0);
+opacity:0;
+}
+
+
+/* Responsive Breakpoint */
+
+/* ukuran mobile */
+@media screen and (max-width: 576px) {
+h1 {
+transform:scale(.8)translateX(-16%)translateY(40px);
+}
+.menu-toggle {
+display:flex;
+}
+#toggle-theme {
+transform:scale(.7);
+}
+#about img {
+transform:scale(.8)translateX(-30%)translateY(50px);
+}
+section p {
+margin-top:22%;
+font-size:1.2rem;
+width:70%;
+}
+#contact p, #portfolio p, #blog p {
+margin-top:16%;
+}
+#blog ul {
+margin-top:7%;line-height:2;
+}
+label {
+font-size:1rem;
+}
+form input, textarea {
+font-size:0.9rem;
+}
+form{
+min-width:60%;
+}
+form input:nth-child(2), input#email, textarea {
+min-width:80%;
+}
+form input:last-child {
+transform:scale(.7);
+}
+.gallery img {
+min-width:90%;
+}
+nav ul {
+position:absolute; 
+right:0;
+top:0;
+width:60%;
+height:100vh;
+justify-content:space-evenly;
+align-items:center;
+flex-direction:column;
+background-color:black;
+z-index: 1;
+transform:translateX(100%);
+transition:all 1s;
+opacity:0;
+}
+nav ul.slide{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+/* ukuran tablet */
+@media screen and (max-width: 768px) {
+h1 {
+transform:scale(.85)translateX(-14%)translateY(40px);
+}
+section p {
+margin-top:16%;
+font-size:1.2rem;
+width:70%;
+}
+#about p {
+margin-top:24%;
+}
+#about img {
+transform:scale(.9)translateX(-15%)translateY(80px);
+}
+#contact p, #portfolio p, #blog p {
+margin-top:16%;
+}
+
+#blog ul {
+margin-top:7%;line-height:2;
+}
+.menu-toggle {
+z-index:1;
+}
+#toggle-theme {
+transform:scale(.8);
+}
+footer p {
+text-align:center;
+}
+footer ul li {
+margin-top:4%;
+}
+footer ul li a svg {
+transform:scale(1.1);
+}
+nav ul {
+width:50%;
+}
+} 
+
+@media screen and (min-width:992px) {
+h1 {
+transform:scale(.9)translateX(-10%)translateY(40px);
+}
+section p {
+margin-top:12%;
+font-size:1.3rem;
+width:70%;
+}
+#about p {
+margin-top:24%;
+}
+#about img {
+transform:scale(.95)translateX(-5%)translateY(80px);
+}
+#contact p, #portfolio p, #blog p {
+margin-top:16%;
+}
+
+#blog ul {
+margin-top:7%;line-height:2;
+}
+label, #blog a {
+font-size:1.1rem;
+}
+.menu-toggle {
+z-index:1;
+}
+#toggle-theme {
+transform:scale(.9);
+}
+nav ul {
+width:50%;
+}
+footer ul li {
+margin-top:4%;
+}
+footer p {
+text-align:center;
+}
+footer ul li a svg {
+transform:scale(1.3);
+}
+}
+
+@media screen and (min-width: 1200px) {
+#blog p, #contact p, #portfolio p {
+margin-top:7%;
+}
+}
+
+@media screen and (min-width: 1360px) {
+h1 {
+transform:scale(1)translateX(-10%)translateY(60px);
+}
+section p {
+margin-top:12%;
+font-size:1.4rem;
+width:70%;
+}
+#about img {
+transform:scale(1)translateX(7%)translateY(160px);
+}
+#contact p, #portfolio p, #blog p {
+margin-top:8%;
+}
+#blog ul li a {
+font-size:1.2rem;
+}
+footer ul li a svg {
+transform:scale(1.2);
+}
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+section {
+    background-color: #fff;
+    padding: 2em;
+    margin-bottom: 20px;
+  margin-top:5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width:80%;
+z-index:0;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  margin-left:13%;
+}
+
+h1, h4 {font-family:montserrat;}
+
+p {
+    font-size: 18px;
+  text-align:justify;
+  text-indent:5%;
+  width:80%;
+  margin:auto;
+  line-height:2;
+font-family:lato;
+}
+
+#toggle-theme {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  margin-top:3%;
+}
+
+#toggle-theme:hover {
+    background-color: #444;
+  box-shadow: -5px -5px 10px 0px gray;
+}
+
+.gallery {
+    display: flex;
+flex-wrap:wrap;
+    justify-content: center;
+  margin-top:7%;
+}
+
+.gallery img {
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-left:10%;
+margin-top:3%;
+}
+
+.port-web {
+margin-top:-6%;
+}
+
+.agency-web {
+margin-top:5%;
+}
+
+.gallery img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+cursor:pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background:gray;
+width:50%;
+margin:auto;
+margin-top:5%;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+width:60%;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #444;
+   box-shadow: -5px -5px 10px 0px gray;
+}
+
+/* Dark theme */
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-theme nav a {
+    color: #fff;
+}
+
+.dark-theme section {
+    background-color: #444;
+    color: #fff;
+}
+
+.dark-theme #toggle-theme {
+    background-color: #fff;
+    color: #333;
+}
+
+.dark-theme #toggle-theme:hover {
+    background-color: #ccc;
+}
+
+.dark-theme a {
+color:white;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.dark-theme footer {
+mix-blend-mode:difference;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dark-theme footer ul li a[href="https://www.facebook.com/Bitterballenlumerku/"] svg {
+color:blue;
+}
+
+footer li {
+  margin-right: 20px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #ccc;
+}
+
+footer .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+footer p {
+font-size:1rem;
+}
+</style>
+<body>
+    <header>
+        <nav>
+<div class="logo">
+<h4>Bryan Phillip</h4>
+</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+
+	<div class="menu-toggle">
+<input type="checkbox" />
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to My Website</h1>
+            <p>
+              Welcome guys to here. This website showcases my best work, featuring projects that demonstrate my skills and expertise in web development.
+
+Take a look around and explore my projects, which range from responsive websites and single-page applications to interactive UI components and accessibility-focused designs. I'm proud of what I've accomplished, and I'm excited to share my experiences with you.
+
+Whether you're a potential client, collaborator, or simply someone who appreciates good design and development, I hope you'll find inspiration and value in my work. If you have any questions or would like to discuss a potential project, please don't hesitate to get in touch.
+
+Thanks for visiting, and I look forward to sharing my creative journey with you!</p>
+            <button id="toggle-theme">Toggle Theme</button>
+        </section>
+        <section id="about">
+            <h1>About Me</h1>
+          <img src="C:\Users\USER\Documents\Desktop\myportfolio-3\img\square.jpg" alt="Profile Picture" style="border-radius:50%;width:250px;margin-left:35%;">
+            <p>Hi, I'm Bryan Phillip, a passionate freelance front-end developer with a love for crafting exceptional user experiences. With a keen eye for detail and a passion for innovation, I bring ideas to life through clean, efficient, and responsive code. My expertise lies in HTML, CSS, JavaScript, and popular frameworks like React and Angular. I'm dedicated to delivering high-quality solutions that meet and exceed client expectations. When I'm not coding, you can find me exploring new design trends, experimenting with emerging technologies, or simply enjoying a good cup of coffee. Let's build something amazing together!</p>
+        </section>
+        <section id="contact">
+            <h1>Contact Me</h1>
+            <p>This is the contact page.</p>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea><br><br>
+                <input type="submit" value="Send">
+            </form>
+        </section>
+        <section id="portfolio">
+            <h1>Portfolio</h1>
+            <p>This is the portfolio page.</p>
+            <div class="gallery">
+<div class="port-web">
+<p>Portfolio Web</p>
+                <a href="https://raxcode0101.github.io/MyPortfolio_2/" target="blank"><img src="C:\Users\USER\Documents\Desktop\myportfolio-3\img\myportfolio-2.png" alt="Image 2"></a>
+</div>
+<div class="agency-web">
+<p>Agency Web</p>
+                <a href="https://raxcode0101.github.io/agency-website/" target="blank"><img src="C:\Users\USER\Documents\Desktop\myportfolio-3\img\agency_website.png" alt="Image 3"></a>
+</div>
+            </div>
+        </section>
+        <section id="blog">
+            <h1>Blog</h1>
+            <p>This is the blog page.</p>
+            <ul>
+                <li><a target="blank" href="https://bryan-p-s-0101.blogspot.com/2023/09/resume-evolusi-komputer-dari-dulu.html">Resume evolusi komputer</a></li>
+                <li><a target="blank" href="https://bryan-p-s-0101.blogspot.com/2024/01/httpsbryan-p-s.comfashion-indonesia-dari-masa-ke-masa.html">Fashion indonesia</a></li>
+                <li><a target="blank" href="https://bryan-p-s-0101.blogspot.com/2024/07/mengenal-lebih-dekat-dengan-alam.html">Mengenal Alam</a></li>
+            </ul>
+        </section>
+    </main>
+    <script>
+// Add event listener to navigation links
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', event => {
+        event.preventDefault();
+        const target = event.target.getAttribute('href');
+        document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Add event listener to toggle theme button
+document.getElementById('toggle-theme').addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+});
+
+// Add animation to sections on scroll
+document.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
+        if (scrollPosition > top && scrollPosition < top + height) {
+            section.classList.add('active');
+        } else {
+            section.classList.remove('active');
+        }
+    });
+});
+
+// Add event listener to form submit
+document.querySelector('form').addEventListener('submit', event => {
+   
+event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+});
+
+const menuToggle = document.querySelector('.menu-toggle input');
+const nav = document.querySelector('nav ul');
+
+menuToggle.addEventListener('click', function() {
+nav.classList.toggle('slide');
+});
+
+</script>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2024 Bryan Phillip. All rights reserved.</p>
+    <p>Follow me on social media:</p>
+    <ul>
+
+      <li>
+<a href="https://www.facebook.com/Bitterballenlumerku/" target="_blank">
+<svg color="skyblue" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+</svg>
+</a>
+</li>
+
+      <li>
+<a href="https://x.com/BryanPh95042073" target="_blank">
+<svg color="black" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+</svg>
+</a>
+</li>
+
+      <li>
+<a href="https://www.instagram.com/gray0boy/" target="_blank">
+<svg color="red" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+
+  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+
+</svg>
+</a>
+</li>
+
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
