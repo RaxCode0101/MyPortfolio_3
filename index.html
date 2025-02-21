@@ -557,13 +557,13 @@ Thanks for visiting, and I look forward to sharing my creative journey with you!
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
-            <form name="kotak-saran" action="https://script.google.com/macros/s/AKfycbz-n-a81n98QX8AuPOib-Ym7o5TOexOmdf2UkZTwk2FsmYA3ErF9M3pMb2ZUFc_PIaM/exec" method="POST">
+            <form name="submit-to-google-sheet-2">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name"><br><br>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email"><br><br>
                 <label for="message">Message:</label>
-                <textarea id="message" name="message"></textarea><br><br>
+                <textarea id="message" name="pesan"></textarea><br><br>
                 <button type="submit" class="btn btn-primary btn-kirim">Send</button>
 <button class="btn btn-primary btn-loading d-none" type="button" disabled>
   <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
@@ -707,5 +707,16 @@ console.log('Success!', response)
     </ul>
   </div>
 </footer>
+	<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwCSo1OXmQzA_1pOFKoredFcfX45N4euDw5ngFd90cbLAOFmG1DfKcBsyUplQtEzrEC/exec';
+  const form = document.forms['submit-to-google-sheet-2']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 </body>
 </html>
